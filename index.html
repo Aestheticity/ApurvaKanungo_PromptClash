@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>StockGuard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>StockGuard</h1>
+<p class="tagline">Protecting Stock. Preventing Waste.</p>
+
+<button id="themeToggle" class="theme-toggle" onclick="toggleTheme()">
+    🌙
+</button>
+
+<!-- DASHBOARD COUNTERS -->
+<div class="dashboard">
+    <div class="counter total">
+        <h3>Total Items</h3>
+        <p id="totalCount">0</p>
+    </div>
+    <div class="counter safe">
+        <h3>Safe</h3>
+        <p id="safeCount">0</p>
+    </div>
+    <div class="counter warning">
+        <h3>Expiring Soon</h3>
+        <p id="warningCount">0</p>
+    </div>
+    <div class="counter expired">
+        <h3>Expired</h3>
+        <p id="expiredCount">0</p>
+    </div>
+</div>
+
+<!-- ADD ITEM -->
+<div class="card">
+    <h2>Add Inventory Item</h2>
+
+    <input type="text" id="name" placeholder="Item Name">
+
+    <!-- CATEGORY DROPDOWN -->
+    <select id="category">
+        <option value="">Select Category</option>
+        <option value="Dairy">Dairy</option>
+        <option value="Beverage">Beverage</option>
+        <option value="Bakery">Bakery</option>
+        <option value="Frozen">Frozen</option>
+        <option value="Produce">Produce</option>
+        <option value="Dry Goods">Dry Goods</option>
+    </select>
+
+    <input type="number" id="quantity" placeholder="Quantity">
+    <input type="date" id="expiry">
+
+    <button onclick="addItem()">Add Item</button>
+</div>
+
+<!-- FILTER -->
+<div class="card">
+    <h2>Filter by Category</h2>
+
+    <select id="categoryFilter" onchange="renderTable()">
+        <option value="all">All Categories</option>
+    </select>
+</div>
+
+<!-- SORT -->
+<div class="card">
+    <h2>Sort by Expiry</h2>
+
+    <select id="sortOrder" onchange="renderTable()">
+        <option value="none">No Sorting</option>
+        <option value="asc">Nearest Expiry First</option>
+        <option value="desc">Latest Expiry First</option>
+    </select>
+</div>
+
+<!-- TABLE -->
+<div class="card">
+    <h2>Inventory Dashboard</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Item</th>
+                <th>Category</th>
+                <th>Qty</th>
+                <th>Expiry</th>
+                <th>Days Left</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody id="tableBody"></tbody>
+    </table>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
